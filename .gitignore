@@ -1,3 +1,5 @@
 build*/
 *.bat
 doc/
+/lua_modules
+/.luarocks
