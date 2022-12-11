@@ -3,3 +3,4 @@ build*/
 doc/
 /lua_modules
 /.luarocks
+.idea
