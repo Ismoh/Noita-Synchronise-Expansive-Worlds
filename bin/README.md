@@ -63,7 +63,7 @@
 ## Create a rockspec
 Do not run this, if there already is a *.rockspec file!
 ```cmd
-luarocks write_rockspec --license="MIT" --lua-versions="5.1" --rockspec-format="3.0"
+luarocks write_rockspec --output="nsew-0.0.4-1.rockspec" --license="MIT" --lua-versions="5.1" --rockspec-format="3.0"
 ```
 
 ## Run unit test
@@ -77,3 +77,6 @@ Run `luarocks list` in `\ ` directory.
 
 ## Install all dependencies defined in nsew-*.rockspec
 Run `luarocks install --only-deps nsew-*.rockspec`. Replace `*` with the version number of the rockspec.
+
+## LuaRocks build
+https://github.com/luarocks/luarocks/issues/509#issuecomment-800368236
