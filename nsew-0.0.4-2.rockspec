@@ -1,6 +1,6 @@
 rockspec_format = "3.0"
 package = "nsew"
-version = "dev-1"
+version = "0.0.4-2"
 source = {
    url = "git+https://github.com/Ismoh/Noita-Synchronise-Expansive-Worlds.git",
    dir = "nsew",
@@ -49,5 +49,9 @@ build = {
    },
    build = {
       type = "cmake",
+   },
+   test = {
+      type = "command",
+      script = "test/load_luasocket.lua"
    }
 }

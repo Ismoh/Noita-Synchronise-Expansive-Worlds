@@ -61,13 +61,19 @@
 4. Run `luarocks help` in `\ ` directory again. Done!
 
 ## Create a rockspec
-luarocks write_rockspec nsew --license="MIT" --lua-versions="5.1" --rockspec-format="3.0"
+Do not run this, if there already is a *.rockspec file!
+```cmd
+luarocks write_rockspec --license="MIT" --lua-versions="5.1" --rockspec-format="3.0"
+```
 
 ## Run unit test
+```cmd
 luarocks test
+```
+[docs](https://github.com/luarocks/luarocks/wiki/test#test-types)
 
 ## Check for updates on dependencies
 Run `luarocks list` in `\ ` directory.
 
-## Install all dependencies defined in noita-mp-*.rockspec
-Run `luarocks install --only-deps noita-mp-*.rockspec`. Replace `*` with the version number of the rockspec.
+## Install all dependencies defined in nsew-*.rockspec
+Run `luarocks install --only-deps nsew-*.rockspec`. Replace `*` with the version number of the rockspec.
