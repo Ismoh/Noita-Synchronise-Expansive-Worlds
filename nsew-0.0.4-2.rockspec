@@ -18,17 +18,22 @@ build_dependencies = {
    "ldoc == 1.4.6"
 }
 build = {
-   type = "cmake",
-   variables = {
-      CMAKE = "cmake -S . -B build -G Ninja ^",
-      CMAKE_TOOLCHAIN_FILE = "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
-      VCPKG_TARGET_TRIPLET = "x86-windows-static",
-      CMAKE_CXX_FLAGS = "\"/D_WIN32_WINNT=0x0601 /DWINVER=0x0601 /DWIN32 /D_WINDOWS /EHsc /MD\"",
-      NSEW_EXTERNAL_MAP = "OFF",
-      LUAJIT_COMPILED = "D:/a/Noita-Synchronise-Expansive-Worlds/Noita-Synchronise-Expansive-Worlds/LuaJIT/LuaJIT-2.0.4",
-      NSEW_PREBUILT_DOCS_DIR = "D:/a/Noita-Synchronise-Expansive-Worlds/Noita-Synchronise-Expansive-Worlds/doc",
-      CMAKE_BUILD_TYPE = "Release"
-   }
+   type = "command",
+   build_command = "./vcpkg install boost-system:x86-windows-static && " ..
+           "./vcpkg install boost-asio:x86-windows-static && " ..
+           "mkdir build && " ..
+           "cmake -S . -B build -G Ninja ^ " ..
+           "-DCMAKE_TOOLCHAIN_FILE=./vcpkg/scripts/buildsystems/vcpkg.cmake ^ " ..
+           "-DVCPKG_TARGET_TRIPLET=x86-windows-static ^ " ..
+           "-DCMAKE_CXX_FLAGS=\"/D_WIN32_WINNT=0x0601 /DWINVER=0x0601 /DWIN32 /D_WINDOWS /EHsc /MD\" ^ " ..
+           "-DNSEW_EXTERNAL_MAP=OFF ^ " ..
+           "-DNSEW_PREBUILT_DOCS_DIR=./doc ^ " ..
+           "-DCMAKE_BUILD_TYPE=Release",
+    install_command = "cmake --build build && " ..
+           "cd build && " ..
+           "ctest --output-on-failure"
+           --.. " && cpack"
+   ,
 }
 test = {
    type = "command",

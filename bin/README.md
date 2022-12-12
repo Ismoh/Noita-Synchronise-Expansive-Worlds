@@ -78,5 +78,27 @@ Run `luarocks list` in `\ ` directory.
 ## Install all dependencies defined in nsew-*.rockspec
 Run `luarocks install --only-deps nsew-*.rockspec`. Replace `*` with the version number of the rockspec.
 
+### Install dependencies related to build process
+Follow install steps on [vcpkg](https://vcpkg.io/en/getting-started.html) and install it as a git submodule.
+Run `git submodule add https://github.com/Microsoft/vcpkg.git` to add vckpg as a submodule.
+After that run `.\vcpkg\bootstrap-vcpkg.bat` to install vcpkg.
+
 ## LuaRocks build
-https://github.com/luarocks/luarocks/issues/509#issuecomment-800368236
+Change default cmake generator with the following config changes in `.luarocks\config-5.1.lua`:
+```lua
+lua_interpreter = "luajit.exe"
+cmake_generator = "Ninja"
+variables = {
+   -- your local absolute paths
+}
+```
+[related-issue-1](https://github.com/luarocks/luarocks/issues/509#issuecomment-800368236)
+[related-issue-2](https://github.com/luarocks/luarocks/issues/1476#issuecomment-1346771079)
+
+Version mismatch? There was the following error:
+```cmd
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+CMake 3.22 or higher is required.  You are running version 3.21.4
+```
+Update your cmake version by updating MSYS2: [How-to!](https://www.msys2.org/docs/updating/)
+Read carefully!
