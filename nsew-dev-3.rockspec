@@ -1,9 +1,8 @@
 rockspec_format = "3.0"
 package = "nsew"
-version = "0.0.4-2"
+version = "dev-3"
 source = {
    url = "git+https://github.com/Ismoh/Noita-Synchronise-Expansive-Worlds.git",
-   tag = "0.0.4"
 }
 description = {
    summary = "# Noita Synchronise Expansive Worlds",
